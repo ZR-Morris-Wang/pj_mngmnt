@@ -1,0 +1,28 @@
+Visit
+https://www.text-tree-generator.com/
+for the tree generate from below code
+
+----------
+
+Tag Structure
+= app.component
+== header
+== sidebar
+
+----------
+Header
+----------
+Sidebar
+=sidenav
+==Home: '/projects/home'
+==About: '/projects/about'
+==Contact: '/projects/contact'
+=sidenav-content
+==<router-outlet name='projects'>
+----------
+Routing
+='' -> '/projects'
+=='': (landing)
+=='home': (home)
+=='about': (about)
+=='contact': (contact)
