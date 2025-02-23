@@ -1,13 +1,16 @@
 <mat-sidenav-container class="sidebar-container">
     <mat-sidenav mode="side" [(opened)]="opened">
       <mat-list>
-        <label routerLink="home"><mat-list-item><mat-icon>home</mat-icon> Home</mat-list-item></label>
-        <label routerLink="about"><mat-list-item><mat-icon>info</mat-icon> About</mat-list-item></label>
-        <label routerLink="contact"><mat-list-item><mat-icon>contact_mail</mat-icon> Contact</mat-list-item></label>
+        <label [routerLink]="[basedir, { outlets: { abc: 'home' }}]"><mat-list-item><mat-icon>home</mat-icon> Home</mat-list-item></label>
+        <label [routerLink]="[basedir, { outlets: { abc: 'about' }}]"><mat-list-item><mat-icon>info</mat-icon> About</mat-list-item></label>
+        <label [routerLink]="[basedir, { outlets: { abc: 'contact' }}]"><mat-list-item><mat-icon>contact_mail</mat-icon> Contact</mat-list-item></label>
       </mat-list>
     </mat-sidenav>
     <mat-sidenav-content>
-      <ng-content><router-outlet /></ng-content>
+      <ng-content>
+        <router-outlet name="abc"/>
+        <router-outlet />
+      </ng-content>
     </mat-sidenav-content>
   </mat-sidenav-container>
   
