@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
+import type { Task } from '../../model/task.type';
+import { TaskService } from '../../service/task.service';
 
 @Component({
   selector: 'app-home',
@@ -7,5 +9,12 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  
+  taskItems = signal<Array<Task>>([]);
+  taskService = inject(TaskService);
 
+  ngOnInit(): void {
+    this.taskService.getTasks().subscribe( tasks => { console.log(tasks); this.taskItems.set(tasks)});
+    console.log(this.taskItems())
+  }
 }

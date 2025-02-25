@@ -14,35 +14,28 @@ export const routes: Routes = [
             loadComponent() {
                 return import('./components/landing/landing.component').then(m => m.LandingComponent);
             },
-            outlet: "abc"
+            outlet: "projects"
         },
         {
             path: 'home',
             loadComponent() {
                 return import('./components/home/home.component').then(m => m.HomeComponent);
             },
-            outlet: "abc"
+            outlet: "projects"
         },
         {
             path: 'about',
             loadComponent() {
                 return import('./components/about/about.component').then(m => m.AboutComponent);
             },
-            outlet: "abc"
+            outlet: "projects"
         },
         {
             path: 'contact',
             loadComponent() {
                 return import('./components/contact/contact.component').then(m => m.ContactComponent);
             },
-            outlet: "abc"
+            outlet: "projects"
         },
-        {
-            path: 'contact',
-            loadComponent() {
-                return import("./components/header/header.component").then(m => m.HeaderComponent);
-            },
-            outlet: "primary"
-        }
         ],
     }];
