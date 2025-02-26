@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import type { Task } from '../model/task.type';
+import type { Task, TaskInput } from '../model/task.type';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +8,14 @@ import type { Task } from '../model/task.type';
 export class TaskService {
 
   http = inject(HttpClient);
+  private port = 8000;
+  private url = `http://localhost:${this.port}/heroes`;
 
   getTasks() {
-    const url = `https://jsonplaceholder.typicode.com/posts`;
-    return this.http.get<Array<Task>>(url);
+    return this.http.get<Array<Task>>(this.url);
+  }
+
+  postTasks(body: TaskInput) {
+    return this.http.post<TaskInput>(this.url, body);
   }
 }

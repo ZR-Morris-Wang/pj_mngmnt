@@ -9,12 +9,12 @@ import { TaskService } from '../../service/task.service';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  
+
   taskItems = signal<Array<Task>>([]);
   taskService = inject(TaskService);
 
-  ngOnInit(): void {
+  getTasks(): void {
     this.taskService.getTasks().subscribe( tasks => { console.log(tasks); this.taskItems.set(tasks)});
-    console.log(this.taskItems())
   }
+
 }

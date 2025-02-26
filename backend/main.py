@@ -1,8 +1,8 @@
 from typing import Annotated
 
 from fastapi import Depends, FastAPI, HTTPException, Query
+from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import Field, Session, SQLModel, create_engine, select
-
 
 class Hero(SQLModel, table=True):
     id: int | None = Field(default=None, primary_key=True)
@@ -31,13 +31,22 @@ SessionDep = Annotated[Session, Depends(get_session)]
 
 app = FastAPI()
 
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all HTTP methods
+    allow_headers=["*"],  # Allows all headers
+)
 
 @app.on_event("startup")
 def on_startup():
     create_db_and_tables()
 
 
-@app.post("/heroes/")
+@app.post("/heroes")
 def create_hero(hero: Hero, session: SessionDep) -> Hero:
     session.add(hero)
     session.commit()
@@ -45,7 +54,7 @@ def create_hero(hero: Hero, session: SessionDep) -> Hero:
     return hero
 
 
-@app.get("/heroes/")
+@app.get("/heroes")
 def read_heroes(
     session: SessionDep,
     offset: int = 0,
