@@ -4,6 +4,7 @@
         <label [routerLink]="[basedir, { outlets: { projects: 'home' }}]" (click)="postTask()"><mat-list-item><mat-icon>home</mat-icon> Home</mat-list-item></label>
         <label [routerLink]="[basedir, { outlets: { projects: 'about' }}]"><mat-list-item><mat-icon>info</mat-icon> About</mat-list-item></label>
         <label [routerLink]="[basedir, { outlets: { projects: 'contact' }}]"><mat-list-item><mat-icon>contact_mail</mat-icon> Contact</mat-list-item></label>
+        <label (click)="addProject()"><mat-list-item><mat-icon>add</mat-icon>New Project</mat-list-item></label>
       </mat-list>
     </mat-sidenav>
     <mat-sidenav-content>

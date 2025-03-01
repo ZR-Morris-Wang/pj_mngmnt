@@ -2,6 +2,7 @@ $sidebar-width: 20%;
 $padding: 20px;
 
 .sidebar-container {
+  flex: 1;
   height: 100%;
 }
 
@@ -12,12 +13,3 @@ mat-sidenav {
 mat-sidenav-content {
   padding: $padding;
 }
-
-.one {
-  display: absolute;
-}
-
-.two {
-  display: absolute;
-}
-

@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "backend": "fastapi dev ./backend/main.py"
+    "backend": "cd backend; fastapi dev ./main.py"
   },
   "private": true,
   "dependencies": {

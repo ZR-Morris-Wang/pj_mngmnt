@@ -1,21 +1,21 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
-import type { Task, TaskInput } from '../model/task.type';
+import { Injectable } from '@angular/core';
+import { Task, TaskInput } from '../model/task.type';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
+  constructor(private http: HttpClient) {}
 
-  http = inject(HttpClient);
   private port = 8000;
-  private url = `http://localhost:${this.port}/heroes`;
+  private url = `http://localhost:${this.port}/tasks`;
 
   getTasks() {
     return this.http.get<Array<Task>>(this.url);
   }
 
-  postTasks(body: TaskInput) {
-    return this.http.post<TaskInput>(this.url, body);
+  postTasks(task: TaskInput) {
+    return this.http.post<TaskInput>(this.url, task);
   }
 }

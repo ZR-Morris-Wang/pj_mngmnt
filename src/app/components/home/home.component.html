@@ -7,3 +7,14 @@
     }
 
 </ul>
+
+<mat-divider />
+
+<button type="button" (click)="getProjects()">Get Project</button>
+<ul>
+    
+    @for (project of projectItems(); track project.id) {
+        <p> {{ project.projectName }} </p> <br>
+    }
+
+</ul>

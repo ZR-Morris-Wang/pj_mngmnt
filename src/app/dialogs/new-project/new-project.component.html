@@ -1,0 +1,15 @@
+<h2 mat-dialog-title (click)="inputValue()">Create new project</h2>
+<form #form="ngForm">
+  <div class="form-container">
+    <mat-form-field>
+      <input matInput placeholder="Enter Project Name" [(ngModel)]="projectObj.projectName" name="projectName" #projectName="ngModel" required/>
+      @if (projectName.errors?.['required'] && projectName.touched && projectName.dirty) {
+        <mat-error>Project Name is required</mat-error>
+      }
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions class="form-actions">
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button (click)="addProject()" [disabled]="form.invalid">Add</button>
+  </div>
+</form>
