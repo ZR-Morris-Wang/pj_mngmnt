@@ -87,8 +87,8 @@ export class AboutComponent {
   
   addProject(): void {
     const dialogRef = this.dialog.open(NewTaskComponent, {
-      width: '70%',
-      height: '50%',
+      width: '50%',
+      height: '45%',
       data: {message: "New Project"}
     })
 
@@ -210,7 +210,7 @@ export class AboutComponent {
   openDetail(task: testType) {
     const dialogRef = this.dialog.open(TaskComponent, {
       width: '70%',
-      height: '70%',
+      height: '45%',
       data: {
         id: task.id,
         title: task.title,

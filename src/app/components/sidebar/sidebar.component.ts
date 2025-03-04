@@ -49,8 +49,8 @@ export class SidebarComponent {
 
   addProject(): void {
     const dialogRef = this.dialog.open(NewProjectComponent, {
-      width: '70%',
-      height: '50%',
+      width: '50%',
+      height: '30%',
       data: {message: "New Project"}
     })
 
