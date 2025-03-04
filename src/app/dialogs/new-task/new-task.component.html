@@ -1,0 +1,23 @@
+<h2 mat-dialog-title (click)="inputValue()">Create new task</h2>
+<form #form="ngForm">
+  <div class="form-container">
+    <mat-form-field>
+    <input matInput placeholder="Enter Task Title" [(ngModel)]="taskObj.title" name="taskTitle" #taskName="ngModel" required/>
+        @if (taskName.errors?.['required'] && taskName.touched && taskName.dirty) {
+            <mat-error>Task Name is required</mat-error>
+        }
+    </mat-form-field>
+    <mat-divider></mat-divider>
+    
+    <mat-form-field>
+        <input matInput placeholder="Enter Task Description" [(ngModel)]="taskObj.description" name="taskDescription" #taskDescription="ngModel" required/>
+        @if (taskDescription.errors?.['required'] && taskDescription.touched && taskDescription.dirty) {
+            <mat-error>Task Description is required</mat-error>
+        }
+        </mat-form-field>
+  </div>
+  <div mat-dialog-actions class="form-actions">
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button (click)="addTask()" [disabled]="form.invalid">Add</button>
+  </div>
+</form>

@@ -13,7 +13,8 @@ class Task(SQLModel, table=True):
     id: int | None = Field(default=None, primary_key=True)
     userId: int | None = Field(default=None, index=True)
     title: str | None = Field(default=None, index=True)
-    body: str | None = Field(default=None)
+    projectId: int = Field(default=None, index=True)
+    description: str | None = Field(default=None)
 
 @task.post("/")
 def create_hero(task: Task, session: SessionDep) -> Task:

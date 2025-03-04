@@ -1,9 +1,15 @@
 <mat-sidenav-container class="sidebar-container">
     <mat-sidenav mode="side" [(opened)]="opened">
       <mat-list>
-        <label [routerLink]="[basedir, { outlets: { projects: 'home' }}]" (click)="postTask()"><mat-list-item><mat-icon>home</mat-icon> Home</mat-list-item></label>
+        <!-- <label [routerLink]="[basedir, { outlets: { projects: 'home' }}]"><mat-list-item><mat-icon>home</mat-icon> Home</mat-list-item></label>
         <label [routerLink]="[basedir, { outlets: { projects: 'about' }}]"><mat-list-item><mat-icon>info</mat-icon> About</mat-list-item></label>
-        <label [routerLink]="[basedir, { outlets: { projects: 'contact' }}]"><mat-list-item><mat-icon>contact_mail</mat-icon> Contact</mat-list-item></label>
+        <label [routerLink]="[basedir, { outlets: { projects: 'contact' }}]"><mat-list-item><mat-icon>contact_mail</mat-icon> Contact</mat-list-item></label> -->
+        
+        @for (project of projectItems(); track project.id) {
+          <label [routerLink]="[basedir, { outlets: { projects: [project.id]}}]" (click)="identifyId(project)"><mat-list-item><mat-icon>contact_mail</mat-icon>{{project.projectName}}</mat-list-item></label>
+        }
+        
+        
         <label (click)="addProject()"><mat-list-item><mat-icon>add</mat-icon>New Project</mat-list-item></label>
       </mat-list>
     </mat-sidenav>

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Project, ProjectInput } from '../model/task.type';
+import { Project, ProjectInput, Task } from '../model/task.type';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +17,9 @@ export class ProjectService {
 
   postProjects(project: ProjectInput) {
     return this.http.post<ProjectInput>(this.url, project);
+  }
+
+  getAllTasks(projectId: number) {
+    return this.http.get<Array<Task>>(`${this.url}/${projectId}/tasks`);
   }
 }

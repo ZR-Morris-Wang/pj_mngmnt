@@ -4,6 +4,7 @@ from fastapi import Depends, FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import Field, Session, SQLModel, create_engine, select
 from fastapi import APIRouter
+from schema.task import Task
 
 project = APIRouter(
     prefix="/projects",
@@ -13,6 +14,7 @@ class Project(SQLModel, table=True):
     id: int | None = Field(default=None, primary_key=True)
     # projectId: int | None = Field(default=None, index=True)
     projectName: str | None = Field(default=None, index=True)
+    # Tasks: Task = Field(default=None, refereces="id")
 
 @project.post("/")
 def create_hero(project: Project, session: SessionDep) -> Project:

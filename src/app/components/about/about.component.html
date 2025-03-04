@@ -1,1 +1,69 @@
-<p>about works!</p>
+<div>
+    <div class="outer-container">
+        <div class="example-container">
+        <h2 class="todo-title">Todo</h2>      
+        <div
+            cdkDropList
+            #todoList="cdkDropList"
+            id="todo"
+            [cdkDropListData]="todo"
+            [cdkDropListConnectedTo]="[doneList, inProgressList, pendingList]"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            @for (item of todo; track item) {
+            <div class="example-box" (click)="openDetail(item)" cdkDrag>{{item.title}}</div>
+            }
+        </div>
+        <label (click)="addProject()"><mat-list-item><mat-icon>add</mat-icon>New Task</mat-list-item></label>
+        </div>
+        
+        <div class="example-container">
+            <h2 class="in-progress-title">In Progress</h2>
+            <div cdkDropList
+                #inProgressList="cdkDropList"
+                id="inProgress"
+                [cdkDropListData]="inProgress"
+                [cdkDropListConnectedTo]="[todoList, doneList, pendingList]"
+                class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                @for (item of inProgress; track item) {
+                    <div class="example-box" (click)="openDetail(item)" cdkDrag>{{item.title}}</div>
+                }
+        </div>
+        </div>
+
+        <div class="example-container">
+        <h2 class="done-title">Done</h2>
+        
+        <div
+            cdkDropList
+            #doneList="cdkDropList"
+            id="done"
+            [cdkDropListData]="done"
+            [cdkDropListConnectedTo]="[todoList, inProgressList, pendingList]"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            @for (item of done; track item) {
+            <div class="example-box" (click)="openDetail(item)" cdkDrag>{{item.title}}</div>
+            }
+        </div>
+        </div>
+        
+        <div class="example-container">
+        <h2 class="pending-title">Pending</h2>
+        
+        <div
+            cdkDropList
+            #pendingList="cdkDropList"
+            id="pending"
+            [cdkDropListData]="pending"
+            [cdkDropListConnectedTo]="[todoList, inProgressList, doneList]"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            @for (item of pending; track item) {
+            <div class="example-box" (click)="openDetail(item)" cdkDrag>{{item.title}}</div>
+            }
+        </div>
+        </div>
+    </div>
+</div>

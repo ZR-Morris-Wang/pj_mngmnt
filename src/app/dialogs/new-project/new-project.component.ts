@@ -7,10 +7,11 @@ import { ProjectService } from '../../service/project.service';
 import type { ProjectInput } from '../../model/task.type';
 import { FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
 import type { ElementRef } from '@angular/core';
+import { MatListModule } from '@angular/material/list';
 
 @Component({
   selector: 'app-new-project',
-  imports: [MatButtonModule, MatInputModule, MatFormFieldModule, FormsModule],
+  imports: [MatButtonModule, MatInputModule, MatFormFieldModule, FormsModule, MatListModule],
   templateUrl: './new-project.component.html',
   styleUrl: './new-project.component.scss'
 })

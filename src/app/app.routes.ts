@@ -37,5 +37,13 @@ export const routes: Routes = [
             },
             outlet: "projects"
         },
+        {
+            path: ':id',
+            pathMatch: 'full',
+            loadComponent() {
+                return import('./components/about/about.component').then(m => m.AboutComponent);
+            },
+            outlet: "projects"
+        },
         ],
     }];
