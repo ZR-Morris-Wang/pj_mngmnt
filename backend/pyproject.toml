@@ -5,7 +5,6 @@ description = ""
 authors = [
     {name = "ZR-Morris-Wang",email = "ppmmlzr@gmail.com"}
 ]
-readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "fastapi[standard] (>=0.115.8,<0.116.0)",
